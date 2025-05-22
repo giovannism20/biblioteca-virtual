@@ -6,7 +6,7 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu():
-    print("\n📚 GERENCIADOR DE BIBLIOTECA 📚")
+    print("\n GERENCIADOR DE BIBLIOTECA ")
     print("1. Cadastrar livro")
     print("2. Listar livros")
     print("3. Alterar status do livro")
@@ -26,13 +26,13 @@ def cadastrar_livro():
         "status": status
     }
     livros.append(livro)
-    print("✅ Livro cadastrado com sucesso!")
+    print(" Livro cadastrado com sucesso!")
 
 def listar_livros():
     if not livros:
         print("Nenhum livro cadastrado.")
         return
-    print("\n📖 Lista de livros:")
+    print("\n Lista de livros:")
     for i, livro in enumerate(livros, 1):
         print(f"{i}. {livro['titulo']} - {livro['autor']} [{livro['genero']}] - Status: {livro['status']}")
 
@@ -45,7 +45,7 @@ def alterar_status():
         if 0 <= i < len(livros):
             novo_status = input("Novo status (lido, lendo, a ler): ").lower()
             livros[i]['status'] = novo_status
-            print("✅ Status atualizado.")
+            print(" Status atualizado.")
         else:
             print("Número inválido.")
     except ValueError:
@@ -57,7 +57,7 @@ def buscar_livros():
     encontrados = [livro for livro in livros if livro.get(campo, '').lower() == valor]
 
     if encontrados:
-        print(f"\n🔍 Livros encontrados ({len(encontrados)}):")
+        print(f"\n Livros encontrados ({len(encontrados)}):")
         for livro in encontrados:
             print(f"{livro['titulo']} - {livro['autor']} [{livro['genero']}] - Status: {livro['status']}")
     else:
@@ -67,7 +67,7 @@ def exportar_lista():
     with open("biblioteca.txt", "w", encoding="utf-8") as f:
         for livro in livros:
             f.write(f"{livro['titulo']} - {livro['autor']} [{livro['genero']}] - Status: {livro['status']}\n")
-    print("📁 Lista exportada para 'biblioteca.txt'.")
+    print(" Lista exportada para 'biblioteca.txt'.")
 
 def main():
     while True:
@@ -86,7 +86,7 @@ def main():
         elif opcao == "5":
             exportar_lista()
         elif opcao == "6":
-            print("Saindo... 📚 Até a próxima!")
+            print("Saindo...  Até a próxima!")
             break
         else:
             print("Opção inválida. Tente novamente.")
