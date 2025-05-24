@@ -1,4 +1,4 @@
-import biblioteca
+from biblioteca import Biblioteca
 import livro
 
 if __name__ == "__main__":

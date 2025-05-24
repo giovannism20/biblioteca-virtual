@@ -1,4 +1,5 @@
 import os
+from uuid import uuid4
 
 livros = []
 
@@ -6,8 +7,9 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 class Biblioteca:
-    def __init__(self):
-        pass
+    def __init__(self, nome):
+        self.uuid = uuid4()
+        self.nome = nome
 
     def menu(self):
         print("\n GERENCIADOR DE BIBLIOTECA ")
