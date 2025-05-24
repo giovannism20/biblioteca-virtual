@@ -7,15 +7,10 @@ class Biblioteca:
         self.livros = []
 
     def cadastrar_livro(self, livro):
-        livros.append(livro)
+        self.livros.append(livro)
 
     def listar_livros(self):
-        if not livros:
-            print("Nenhum livro cadastrado.")
-            return
-        print("\n Lista de livros:")
-        for i, livro in enumerate(livros, 1):
-            print(f"{i}. {livro['titulo']} - {livro['autor']} [{livro['genero']}] - Status: {livro['status']}")
+        print(self.livros)
 
     def alterar_status(self):
         self.listar_livros()
