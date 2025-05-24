@@ -1,5 +1,4 @@
-from biblioteca import Biblioteca
-import livro
+from model import *
 from view.menu_biblioteca import menu_biblioteca
 import util
 
