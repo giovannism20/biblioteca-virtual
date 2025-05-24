@@ -1,4 +1,4 @@
-def menu():
+def menu_biblioteca():
     print("\n GERENCIADOR DE BIBLIOTECA ")
     print("1. Cadastrar livro")
     print("2. Listar livros")

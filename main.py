@@ -1,12 +1,13 @@
 from biblioteca import Biblioteca
 import livro
-from view.menu import menu
+from view.menu_biblioteca import menu_biblioteca
+import util
 
 if __name__ == "__main__":
     while True:
-        menu()
+        menu_biblioteca()
         opcao = input("Escolha uma opção: ")
-        limpar_tela()
+        util.limpar_tela()
 
         if opcao == "1":
             biblioteca.cadastrar_livro()
