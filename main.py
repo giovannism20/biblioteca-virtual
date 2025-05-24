@@ -59,6 +59,26 @@ if __name__ == "__main__":
                 if 0 <= index < len(lista_bibliotecas):
                     nome_selecionado = lista_bibliotecas[index]
                     instancia_biblioteca = bibliotecas[nome_selecionado]
+
+                    print("Selecione o livro pelo número: ")
+                    lista_livros = list(livros.keys())
+
+                    for i, nome_livro in enumerate(lista_livros, start=1):
+                        print(f"{i} - {nome_livro}")
+
+                    escolha_biblioteca = input("Digite o número do livro: ")
+
+                    if escolha_biblioteca.isdigit():
+                        index = int(escolha_biblioteca) - 1
+
+                        if 0 <= index < len(lista_livros):
+                            nome_selecionado = lista_livros[index]
+                            instancia_livro_test = livros[nome_selecionado]
+
+                            instancia_biblioteca.cadastrar_livro(instancia_livro_test)
+                            instancia_biblioteca.listar_livros
+                    else:
+                        print("Número inválido.")
                 else:
                     print("Número inválido.")
             else:
