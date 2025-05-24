@@ -1,25 +1,13 @@
 from uuid import uuid4
 
-livros = []
-
 class Biblioteca:
     def __init__(self, nome):
         self.uuid = uuid4()
         self.nome = nome
+        self.livros = []
 
-    def cadastrar_livro(self):
-        titulo = input("Título do livro: ")
-        autor = input("Autor: ")
-        genero = input("Gênero: ")
-        status = input("Status (lido, lendo, a ler): ").lower()
-        livro = {
-            "titulo": titulo,
-            "autor": autor,
-            "genero": genero,
-            "status": status
-        }
+    def cadastrar_livro(self, livro):
         livros.append(livro)
-        print(" Livro cadastrado com sucesso!")
 
     def listar_livros(self):
         if not livros:

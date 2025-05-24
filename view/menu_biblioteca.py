@@ -1,8 +1,5 @@
 def menu_biblioteca():
     print("\n GERENCIADOR DE BIBLIOTECA ")
-    print("1. Cadastrar livro")
-    print("2. Listar livros")
-    print("3. Alterar status do livro")
-    print("4. Buscar livros")
-    print("5. Exportar para arquivo")
-    print("6. Sair")
+    print("1. Cadastrar uma nova biblioteca")
+    print("2. Cadastrar um novo livro")
+    print("3. Sair")
