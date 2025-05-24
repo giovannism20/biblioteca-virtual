@@ -2,8 +2,8 @@ from uuid import uuid4
 
 class Biblioteca:
     def __init__(self, nome):
-        self.uuid = uuid4()
         self.nome = nome
+        self.uuid = uuid4()
         self.livros = []
 
     def cadastrar_livro(self, livro):

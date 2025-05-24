@@ -84,6 +84,12 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "6":
+            pass
+        elif opcao == "7":
+            pass
+        elif opcao == "8":
+            pass
+        elif opcao == "9":
             print("Saindo...  Até a próxima!")
             break
         else:

@@ -5,4 +5,7 @@ def menu_biblioteca():
     print("3. Listar bibliotecas")
     print("4. Listar livros")
     print("5. Adicionar livro à biblioteca")
-    print("6. Sair")
+    print("6. Listar livros cadastrados em uma biblioteca")
+    print("7. Alterar status de um livro em uma biblioteca")
+    print("8. Buscar livro")
+    print("9. Sair")
