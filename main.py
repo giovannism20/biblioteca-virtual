@@ -1,10 +1,10 @@
 from biblioteca import Biblioteca
 import livro
+from view.menu import menu
 
 if __name__ == "__main__":
     while True:
-        biblioteca = Biblioteca()
-        biblioteca.menu()
+        menu()
         opcao = input("Escolha uma opção: ")
         limpar_tela()
 
