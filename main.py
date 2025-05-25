@@ -2,7 +2,6 @@ from model.biblioteca import Biblioteca
 from model.livro import Livro
 
 from view.menu_biblioteca import menu_biblioteca
-import util
 
 livros = {}
 bibliotecas = {}
@@ -17,24 +16,27 @@ if __name__ == "__main__":
             instancia_biblioteca = Biblioteca(nome_biblioteca)
             bibliotecas[nome_biblioteca] = instancia_biblioteca
         elif opcao == "2":
-            nome_livro = input("Nome do livro: ")
-            autor_livro = input("Autor do livro: ")
-            genero_livro = input("Gênero do livro: ")
-            edicao_livro = input("Edição do livro: ")
-            serie_livro = input("Série do livro: ")
-            paginas_livro = input("Páginas do livro: ")
-            formato_livro = input("Formato do livro: ")
-            instancia_livro = Livro(
-                nome_livro,
-                autor_livro,
-                genero_livro,
-                edicao_livro,
-                serie_livro,
-                paginas_livro,
-                formato_livro
-            )
+            titulo = input("Nome do livro: ")
+            autor = input("Autor do livro: ")
+            genero = input("Gênero do livro: ")
+            edicao = input("Edição do livro: ")
+            serie = input("Série do livro: ")
+            paginas = input("Páginas do livro: ")
+            formato = input("Formato do livro: ")
 
-            livros[nome_livro] = instancia_livro
+            dados_livro = {
+                "titulo": titulo,
+                "autor": autor,
+                "genero": genero,
+                "edicao": edicao,
+                "serie": serie,
+                "paginas": paginas,
+                "formato": formato
+            }
+
+            instancia_livro = Livro(**dados_livro)
+
+            livros[dados_livro["titulo"]] = instancia_livro
         elif opcao == "3":
             for i, nome_biblioteca in enumerate(bibliotecas.keys(), start=1):
                 print(f"{i} - {nome_biblioteca}")
@@ -76,7 +78,7 @@ if __name__ == "__main__":
                             instancia_livro_test = livros[nome_selecionado]
 
                             instancia_biblioteca.cadastrar_livro(instancia_livro_test)
-                            instancia_biblioteca.listar_livros
+                            instancia_biblioteca.listar_livros()
                     else:
                         print("Número inválido.")
                 else:
