@@ -18,19 +18,7 @@ class Biblioteca:
         return self.livros
 
     def alterar_status(self):
-        self.listar_livros()
-        if not self.livros:
-            return
-        try:
-            i = int(input("Digite o número do livro para alterar o status: ")) - 1
-            if 0 <= i < len(self.livros):
-                novo_status = input("Novo status (lido, lendo, a ler): ").lower()
-                self.livros[i]['status'] = novo_status
-                print(" Status atualizado.")
-            else:
-                print("Número inválido.")
-        except ValueError:
-            print("Entrada inválida.")
+        pass
 
     def buscar_livros(self):
         pass
