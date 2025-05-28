@@ -44,8 +44,10 @@ if __name__ == "__main__":
             for i, nome_livro in enumerate(livros.keys(), start=1):
                 print(f"{i} - {nome_livro}")
         elif opcao == "5":
-            if not bibliotecas:
-                print("Ainda não possuímos bibliotecas cadastradas no sistema.")
+            if not bibliotecas or not livros:
+                print(
+                    "Ainda não possuímos bibliotecas cadastradas no sistema."
+                )
 
             print("Selecione a biblioteca pelo número: ")
             lista_bibliotecas = list(bibliotecas.keys())
@@ -75,10 +77,15 @@ if __name__ == "__main__":
 
                         if 0 <= index < len(lista_livros):
                             nome_selecionado = lista_livros[index]
-                            instancia_livro_test = livros[nome_selecionado]
+                            instancia_livro = livros[nome_selecionado]
 
-                            instancia_biblioteca.cadastrar_livro(instancia_livro_test)
+                            instancia_biblioteca.cadastrar_livro(
+                                instancia_livro
+                            )
+
                             instancia_biblioteca.listar_livros()
+                        else:
+                            print("Número inválido.")
                     else:
                         print("Número inválido.")
                 else:

@@ -10,7 +10,7 @@ class Biblioteca:
         self.livros.append(livro)
 
     def listar_livros(self):
-        print(self.livros)
+        return self.livros
 
     def alterar_status(self):
         self.listar_livros()
