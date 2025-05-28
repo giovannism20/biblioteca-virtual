@@ -1,4 +1,9 @@
 from uuid import uuid4
+from enum import enum
+
+class EstadosLivro(Enum):
+    DISPONIVEL = 1
+    NAO_DISPONIVEL = 2
 
 class Biblioteca:
     def __init__(self, nome):
@@ -7,7 +12,7 @@ class Biblioteca:
         self.livros = []
 
     def cadastrar_livro(self, livro):
-        self.livros.append(livro)
+        self.livros.append({livro, status: EstadosLivro.DISPONIVEL})
 
     def listar_livros(self):
         return self.livros
@@ -28,23 +33,7 @@ class Biblioteca:
             print("Entrada inválida.")
 
     def buscar_livros(self):
-        campo = input("Buscar por (autor/genero/status): ").lower()
-        valor = input(f"Digite o valor para buscar em {campo}: ").lower()
-
-        encontrados = [
-            livro for livro in self.livros
-            if livro.get(campo, "").lower() == valor
-        ]
-
-        if encontrados:
-            print(f"\n Livros encontrados ({len(encontrados)}):")
-            for livro in encontrados:
-                print(
-                    f"{livro['titulo']} - {livro['autor']} "
-                    f"[{livro['genero']}] - Status: {livro['status']}"
-                )
-        else:
-            print("Nenhum livro encontrado com esse critério.")
+        pass
 
     def exportar_lista(self):
         with open("biblioteca.txt", "w", encoding="utf-8") as f:
