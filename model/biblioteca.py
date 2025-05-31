@@ -26,7 +26,34 @@ class Biblioteca:
             print(f"- {livro.titulo} [{status.name}]")
 
     def alterar_status(self):
-        pass
+        if not self.livros:
+            print(f"Nenhum livro cadastrado na biblioteca '{self.nome}'.")
+            return
+
+        print(f"\nSelecione o livro para alterar o status na biblioteca '{self.nome}':")
+        for i, registro in enumerate(self.livros, start=1):
+            livro = registro["livro"]
+            status = registro["status"]
+            print(f"{i} - {livro.titulo} [{status.name}]")
+
+        escolha = input("Digite o número do livro: ")
+
+        if escolha.isdigit():
+            index = int(escolha) - 1
+            if 0 <= index < len(self.livros):
+                registro = self.livros[index]
+                status_atual = registro["status"]
+                novo_status = (
+                    EstadosLivro.NAO_DISPONIVEL
+                    if status_atual == EstadosLivro.DISPONIVEL
+                    else EstadosLivro.DISPONIVEL
+                )
+                registro["status"] = novo_status
+                print(f"Status do livro '{registro['livro'].titulo}' alterado para [{novo_status.name}].")
+            else:
+                print("Número inválido.")
+        else:
+            print("Entrada inválida. Digite um número válido.")
 
     def buscar_livros(self):
         pass
