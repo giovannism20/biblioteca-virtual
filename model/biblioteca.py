@@ -39,3 +39,4 @@ class Biblioteca:
                     f"[{livro['genero']}] - Status: {livro['status']}\n"
                 )
         print("Lista exportada para 'biblioteca.txt'.")
+        
