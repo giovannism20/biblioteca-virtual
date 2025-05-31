@@ -136,9 +136,26 @@ if __name__ == "__main__":
                         print("Número inválido.")
                 else:
                     print("Entrada inválida. Digite um número válido.")
-
         elif opcao == "8":
-            pass
+            print("\nComo deseja buscar o livro?")
+            print("1 - Por Título")
+            print("2 - Por Autor")
+            print("3 - Por Série")
+
+            opcao_busca = input("Digite o número da opção desejada: ")
+
+            if opcao_busca == "1":
+                campo = "titulo"
+            elif opcao_busca == "2":
+                campo = "autor"
+            elif opcao_busca == "3":
+                campo = "serie"
+            else:
+                print("Opção inválida.")
+                continue
+
+            termo = input(f"Digite o {campo} do livro: ")
+            Livro.buscar_livros(campo, termo, livros, bibliotecas)
         elif opcao == "9":
             print("Saindo...  Até a próxima!")
             break
