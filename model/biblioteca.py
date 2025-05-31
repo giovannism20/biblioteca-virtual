@@ -1,5 +1,5 @@
 from uuid import uuid4
-from enum import enum
+from enum import Enum
 
 class EstadosLivro(Enum):
     DISPONIVEL = 1
@@ -12,10 +12,18 @@ class Biblioteca:
         self.livros = []
 
     def cadastrar_livro(self, livro):
-        self.livros.append({livro, status: EstadosLivro.DISPONIVEL})
+        self.livros.append({"livro": livro, "status": EstadosLivro.DISPONIVEL})
 
     def listar_livros(self):
-        return self.livros
+        if not self.livros:
+            print(f"Nenhum livro cadastrado na biblioteca '{self.nome}'.")
+            return
+
+        print(f"\nLivros na biblioteca '{self.nome}':")
+        for registro in self.livros:
+            livro = registro["livro"]
+            status = registro["status"]
+            print(f"- {livro.titulo} [{status.name}]")
 
     def alterar_status(self):
         pass

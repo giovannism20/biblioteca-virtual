@@ -31,7 +31,7 @@ if __name__ == "__main__":
                 "edicao": edicao,
                 "serie": serie,
                 "paginas": paginas,
-                "formato": formato
+                "formato": formato,
             }
 
             instancia_livro = Livro(**dados_livro)
@@ -45,9 +45,7 @@ if __name__ == "__main__":
                 print(f"{i} - {nome_livro}")
         elif opcao == "5":
             if not bibliotecas or not livros:
-                print(
-                    "Ainda não possuímos bibliotecas cadastradas no sistema."
-                )
+                print("Ainda não possuímos bibliotecas cadastradas no sistema.")
 
             print("Selecione a biblioteca pelo número: ")
             lista_bibliotecas = list(bibliotecas.keys())
@@ -79,9 +77,7 @@ if __name__ == "__main__":
                             nome_selecionado = lista_livros[index]
                             instancia_livro = livros[nome_selecionado]
 
-                            instancia_biblioteca.cadastrar_livro(
-                                instancia_livro
-                            )
+                            instancia_biblioteca.cadastrar_livro(instancia_livro)
 
                             instancia_biblioteca.listar_livros()
                         else:
@@ -93,7 +89,29 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "6":
-            pass
+            if not bibliotecas:
+                print("Ainda não possuímos bibliotecas cadastradas no sistema.")
+            else:
+                print("Selecione a biblioteca pelo número:")
+                lista_bibliotecas = list(bibliotecas.keys())
+
+                for i, nome_biblioteca in enumerate(lista_bibliotecas, start=1):
+                    print(f"{i} - {nome_biblioteca}")
+
+                escolha_biblioteca = input("Digite o número da biblioteca: ")
+
+                if escolha_biblioteca.isdigit():
+                    index = int(escolha_biblioteca) - 1
+
+                    if 0 <= index < len(lista_bibliotecas):
+                        nome_selecionado = lista_bibliotecas[index]
+                        instancia_biblioteca = bibliotecas[nome_selecionado]
+
+                        instancia_biblioteca.listar_livros()
+                    else:
+                        print("Número inválido.")
+                else:
+                    print("Entrada inválida. Digite um número válido.")
         elif opcao == "7":
             pass
         elif opcao == "8":
