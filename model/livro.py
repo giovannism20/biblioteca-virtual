@@ -53,7 +53,7 @@ class Livro:
     def consulta_formato(self):
         return self.formato
     
-    @staticmethod
+    @staticmethod #Busca livros por campo, mantendo coesão via método estático
     def buscar_livros(campo, termo, livros, bibliotecas):
         resultados = []
 
