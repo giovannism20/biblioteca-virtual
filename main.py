@@ -1,6 +1,7 @@
 from model.biblioteca import Biblioteca
 from model.livro import Livro
 
+from util import exibir_lista_bibliotecas
 from view.menu_biblioteca import menu_biblioteca
 
 livros = {}
@@ -16,7 +17,30 @@ if __name__ == "__main__":
             instancia_biblioteca = Biblioteca(nome_biblioteca)
             bibliotecas[nome_biblioteca] = instancia_biblioteca
         elif opcao == "2":
-            pass
+            lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
+            if not lista_bibliotecas:
+                continue
+
+            escolha = input("Digite o número da biblioteca: ")
+
+            if escolha.isdigit():
+                index = int(escolha) - 1
+                if 0 <= index < len(lista_bibliotecas):
+                    nome_antigo = lista_bibliotecas[index]
+                    instancia_biblioteca = bibliotecas[nome_antigo]
+
+                    novo_nome = input("Digite o novo nome da biblioteca: ").strip()
+
+                    if novo_nome:
+                        instancia_biblioteca.alterar_nome(novo_nome)
+                        bibliotecas[novo_nome] = instancia_biblioteca
+                        del bibliotecas[nome_antigo]
+                    else:
+                        print("Nome inválido.")
+                else:
+                    print("Número inválido.")
+            else:
+                print("Entrada inválida. Digite um número válido.")
         elif opcao == "3":
             pass
         elif opcao == "4":

@@ -11,6 +11,10 @@ class Biblioteca:
         self.uuid = uuid4()
         self.livros = []
 
+    def alterar_nome(self, novo_nome):
+        self.nome = novo_nome
+        print(f"Nome da biblioteca alterado para '{self.nome}'.")
+
     def cadastrar_livro(self, livro):
         self.livros.append({"livro": livro, "status": EstadosLivro.DISPONIVEL})
 
@@ -57,9 +61,6 @@ class Biblioteca:
                 print("Número inválido.")
         else:
             print("Entrada inválida. Digite um número válido.")
-
-    def buscar_livros(self):
-        pass
 
     def exportar_lista(self):
         with open("biblioteca.txt", "w", encoding="utf-8") as f:
