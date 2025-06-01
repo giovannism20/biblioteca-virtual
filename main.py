@@ -16,6 +16,13 @@ if __name__ == "__main__":
             instancia_biblioteca = Biblioteca(nome_biblioteca)
             bibliotecas[nome_biblioteca] = instancia_biblioteca
         elif opcao == "2":
+            pass
+        elif opcao == "3":
+            pass
+        elif opcao == "4":
+            for i, nome_biblioteca in enumerate(bibliotecas.keys(), start=1):
+                print(f"{i} - {nome_biblioteca}")
+        elif opcao == "5":
             titulo = input("Nome do livro: ")
             autor = input("Autor do livro: ")
             genero = input("Gênero do livro: ")
@@ -37,13 +44,14 @@ if __name__ == "__main__":
             instancia_livro = Livro(**dados_livro)
 
             livros[dados_livro["titulo"]] = instancia_livro
-        elif opcao == "3":
-            for i, nome_biblioteca in enumerate(bibliotecas.keys(), start=1):
-                print(f"{i} - {nome_biblioteca}")
-        elif opcao == "4":
+        elif opcao == "6":
+            pass
+        elif opcao == "7":
+            pass
+        elif opcao == "8":
             for i, nome_livro in enumerate(livros.keys(), start=1):
                 print(f"{i} - {nome_livro}")
-        elif opcao == "5":
+        elif opcao == "9":
             if not bibliotecas or not livros:
                 print("Ainda não possuímos bibliotecas cadastradas no sistema.")
 
@@ -88,7 +96,9 @@ if __name__ == "__main__":
                     print("Número inválido.")
             else:
                 print("Entrada inválida. Digite um número válido.")
-        elif opcao == "6":
+        elif opcao == "10":
+            pass
+        elif opcao == "11":
             if not bibliotecas:
                 print("Ainda não possuímos bibliotecas cadastradas no sistema.")
             else:
@@ -112,7 +122,7 @@ if __name__ == "__main__":
                         print("Número inválido.")
                 else:
                     print("Entrada inválida. Digite um número válido.")
-        elif opcao == "7":
+        elif opcao == "12":
             if not bibliotecas:
                 print("Ainda não possuímos bibliotecas cadastradas no sistema.")
             else:
@@ -136,7 +146,7 @@ if __name__ == "__main__":
                         print("Número inválido.")
                 else:
                     print("Entrada inválida. Digite um número válido.")
-        elif opcao == "8":
+        elif opcao == "13":
             print("\nComo deseja buscar o livro?")
             print("1 - Por Título")
             print("2 - Por Autor")
@@ -153,7 +163,7 @@ if __name__ == "__main__":
 
             termo = input(f"Digite o {campo_busca} do livro: ")
             Livro.buscar_livros(campo_busca, termo, livros, bibliotecas)
-        elif opcao == "9":
+        elif opcao == "14":
             print("Saindo...  Até a próxima!")
             break
         else:

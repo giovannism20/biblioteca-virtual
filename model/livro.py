@@ -87,7 +87,7 @@ class Livro:
                 if lista_bibliotecas:
                     print("  Bibliotecas onde está cadastrado:")
                     for nome, status in lista_bibliotecas:
-                        print(f"      - {nome} [{status}]")
+                        print(f"  s- {nome} [{status}]")
                 else:
                     print("  Sem vinculo a nenhuma biblioteca.\n")
         else:
