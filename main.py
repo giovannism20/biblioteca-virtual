@@ -176,7 +176,6 @@ if __name__ == "__main__":
                     print("Número inválido.")
             else:
                 print("Entrada inválida. Digite um número válido.")
-                    
         elif opcao == "8":
             for i, nome_livro in enumerate(livros.keys(), start=1):
                 print(f"{i} - {nome_livro}")
@@ -226,7 +225,51 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "10":
-            pass
+            lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
+            if not lista_bibliotecas:
+                continue
+
+            escolha_biblioteca = input("Digite o número da biblioteca: ")
+            if not escolha_biblioteca.isdigit():
+                print("Entrada inválida.")
+                continue
+
+            index = int(escolha_biblioteca) - 1
+            if not (0 <= index < len(lista_bibliotecas)):
+                print("Número inválido.")
+                continue
+
+            nome_biblioteca = lista_bibliotecas[index]
+            biblioteca = bibliotecas[nome_biblioteca]
+
+            if not biblioteca.livros:
+                print(f"A biblioteca '{nome_biblioteca}' não possui livros cadastrados.")
+                continue
+
+            print(f"\nLivros da biblioteca '{nome_biblioteca}':")
+            for i, registro in enumerate(biblioteca.livros, start=1):
+                print(f"{i} - {registro['livro'].titulo}")
+
+            escolha_livro = input("Digite o número do livro que deseja remover: ")
+            if not escolha_livro.isdigit():
+                print("Entrada inválida.")
+                continue
+
+            index_livro = int(escolha_livro) - 1
+            if not (0 <= index_livro < len(biblioteca.livros)):
+                print("Número inválido.")
+                continue
+
+            livro_remover = biblioteca.livros[index_livro]["livro"]
+
+            confirmacao = input(
+                f"Tem certeza que deseja remover '{livro_remover.titulo}' da biblioteca '{nome_biblioteca}'? (s/n): "
+            ).strip().lower()
+
+            if confirmacao == "s":
+                biblioteca.remover_livro(livro_remover)
+            else:
+                print(" Remoção cancelada.")
         elif opcao == "11":
             if not bibliotecas:
                 print("Ainda não possuímos bibliotecas cadastradas no sistema.")

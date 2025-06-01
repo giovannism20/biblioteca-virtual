@@ -62,6 +62,14 @@ class Biblioteca:
         else:
             print("Entrada inválida. Digite um número válido.")
 
+    def remover_livro(self, livro_para_remover) -> None:
+        for registro in self.livros:
+            if registro["livro"] == livro_para_remover:
+                self.livros.remove(registro)
+                print(f" Livro '{livro_para_remover.titulo}' removido da biblioteca '{self.nome}'.")
+                return
+        print(f" Livro '{livro_para_remover.titulo}' não encontrado na biblioteca '{self.nome}'.")
+
     def exportar_lista(self):
         with open("biblioteca.txt", "w", encoding="utf-8") as f:
             for livro in self.livros:
