@@ -162,7 +162,11 @@ if __name__ == "__main__":
                 if 0 <= index < len(lista_livros):
                     nome_livro = lista_livros[index]
 
-                    confirmacao = input(f"Tem certeza que deseja excluir o livro '{nome_livro}'? (s/n): ").lower()
+                    confirmacao = (
+                        input(
+                            f"Tem certeza que deseja excluir o livro '{nome_livro}'? (s/n): "
+                            ).lower()
+                    )
                     if confirmacao == "s":
                         del livros[nome_livro]
                         print(f" Livro '{nome_livro}' excluído com sucesso.")
