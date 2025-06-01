@@ -1,4 +1,2 @@
 [MAIN]
 disable=missing-docstring
-[MAIN]
-disable=invalid-name
