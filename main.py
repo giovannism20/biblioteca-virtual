@@ -144,24 +144,15 @@ if __name__ == "__main__":
 
             opcao_busca = input("Digite o número da opção desejada: ")
 
-            if opcao_busca == "1":
-                campo_busca = "titulo"
-            elif opcao_busca == "2":
-                campo_busca = "autor"
-            elif opcao_busca == "3":
-                campo_busca = "serie"
-            else:
+            opcoes = {"1": "titulo", "2": "autor", "3": "serie"}
+            campo_busca = opcoes.get(opcao_busca)
+
+            if not campo_busca:
                 print("Opção inválida.")
                 continue
 
             termo = input(f"Digite o {campo_busca} do livro: ")
-
-            Livro.buscar_livros(
-                campo_busca,
-                termo,
-                livros,
-                bibliotecas
-            )
+            Livro.buscar_livros(campo_busca, termo, livros, bibliotecas)
         elif opcao == "9":
             print("Saindo...  Até a próxima!")
             break
