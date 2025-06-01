@@ -264,8 +264,8 @@ if __name__ == "__main__":
 
             confirmacao = (
                 input(
-                f"Tem certeza que deseja remover '{livro_remover.titulo}'" 
-                f" da biblioteca '{nome_biblioteca}'? (s/n): "
+                f"Tem certeza que deseja remover '{livro_remover.titulo}' "
+                f"da biblioteca '{nome_biblioteca}'? (s/n): "
                 )
             .strip()
             .lower()
