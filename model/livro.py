@@ -71,18 +71,18 @@ class Livro:
         if resultados:
             print(f"\n Resultado da busca por {campo} '{termo}':\n")
             for livro, lista_bibliotecas in resultados:
-                print(f" Título: {livro.titulo}")
-                print(f"   Autor: {livro.autor}")
-                print(f"   Gênero: {livro.genero}")
-                print(f"   Edição: {livro.edicao}")
-                print(f"   Série: {livro.serie}")
-                print(f"   Páginas: {livro.paginas}")
-                print(f"   Formato: {livro.formato}")
+                print(f"  Título: {livro.titulo}")
+                print(f"  Autor: {livro.autor}")
+                print(f"  Gênero: {livro.genero}")
+                print(f"  Edição: {livro.edicao}")
+                print(f"  Série: {livro.serie}")
+                print(f"  Páginas: {livro.paginas}")
+                print(f"  Formato: {livro.formato}")
                 if lista_bibliotecas:
-                    print("   Bibliotecas onde está cadastrado:")
+                    print("  Bibliotecas onde está cadastrado:")
                     for nome, status in lista_bibliotecas:
                         print(f"      - {nome} [{status}]")
                 else:
-                    print("   Sem vinculo a nenhuma biblioteca.\n")
+                    print("  Sem vinculo a nenhuma biblioteca.\n")
         else:
-            print(f"Nenhum livro encontrado com {campo} '{termo}'.")
+            print(f"  Nenhum livro encontrado com {campo} '{termo}'.")
