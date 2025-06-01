@@ -52,7 +52,11 @@ if __name__ == "__main__":
                 index = int(escolha) - 1
                 if 0 <= index < len(lista_bibliotecas):
                     nome_excluir = lista_bibliotecas[index]
-                    confirmacao = input(f"Tem certeza que deseja excluir '{nome_excluir}'? (s/n): ").strip().lower()
+                    confirmacao = (
+                        input(f"Tem certeza que deseja excluir '{nome_excluir}'?(s/n): ")
+                        .strip()
+                        .lower()
+                    )
                     if confirmacao == "s":
                         del bibliotecas[nome_excluir]
                         print(f"Biblioteca '{nome_excluir}' removida com sucesso.")
