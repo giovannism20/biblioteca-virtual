@@ -1,7 +1,7 @@
 from model.biblioteca import Biblioteca
 from model.livro import Livro
 
-from util import exibir_lista_bibliotecas
+from util import exibir_lista_bibliotecas, exibir_lista_livros
 from view.menu_biblioteca import menu_biblioteca
 
 livros = {}
@@ -92,7 +92,64 @@ if __name__ == "__main__":
 
             livros[dados_livro["titulo"]] = instancia_livro
         elif opcao == "6":
-            pass
+            lista_livros = exibir_lista_livros(livros)
+            if not lista_livros:
+                continue
+
+            escolha = input("Digite o número do livro: ")
+
+            if escolha.isdigit():
+                index = int(escolha) - 1
+                if 0 <= index < len(lista_livros):
+                    nome_livro = lista_livros[index]
+                    livro = livros[nome_livro]
+
+                    print(f"\nEditando o livro: {livro.titulo}")
+                    print("Qual campo deseja alterar?")
+                    print("1 - Título")
+                    print("2 - Autor")
+                    print("3 - Gênero")
+                    print("4 - Edição")
+                    print("5 - Série")
+                    print("6 - Número de Páginas")
+                    print("7 - Formato")
+                    print("0 - Cancelar")
+
+                    campo = input("Escolha a opção: ")
+                    campos_disponiveis = {
+                        "1": ("titulo", livro.altera_titulo),
+                        "2": ("autor", livro.altera_autor),
+                        "3": ("genero", livro.altera_genero),
+                        "4": ("edicao", livro.altera_edicao),
+                        "5": ("serie", livro.altera_serie),
+                        "6": ("paginas", livro.altera_paginas),
+                        "7": ("formato", livro.altera_formato),
+                    }
+
+                    if campo == "0":
+                        print("Alteração cancelada.")
+                    elif campo in campos_disponiveis:
+                        campo_nome, metodo = campos_disponiveis[campo]
+                        novo_valor = (
+                            input(f"Digite o novo valor para '{campo_nome}': ")
+                            .strip()
+                        )
+
+                        if campo_nome == "paginas" and not novo_valor.isdigit():
+                            print("Número de páginas deve ser um número.")
+                        else:
+                            metodo(novo_valor)
+
+                            if campo_nome == "titulo":
+                                livros[novo_valor] = livros.pop(nome_livro)
+
+                            print(f" {campo_nome.capitalize()} atualizado com sucesso.")
+                    else:
+                        print(" Opção inválida.")
+                else:
+                    print("Número inválido.")
+            else:
+                print("Entrada inválida. Digite um número válido.")
         elif opcao == "7":
             pass
         elif opcao == "8":
