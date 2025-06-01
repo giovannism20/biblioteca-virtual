@@ -49,7 +49,10 @@ class Biblioteca:
                     else EstadosLivro.DISPONIVEL
                 )
                 registro["status"] = novo_status
-                print(f"Status do livro '{registro['livro'].titulo}' alterado para [{novo_status.name}].")
+                print(
+                    f"Status do livro '{registro['livro'].titulo}' "
+                    f"alterado para [{novo_status.name}]."
+                )
             else:
                 print("Número inválido.")
         else:

@@ -52,20 +52,26 @@ class Livro:
 
     def consulta_formato(self):
         return self.formato
-    
+
     @staticmethod #Busca livros por campo, mantendo coesão via método estático
     def buscar_livros(campo, termo, livros, bibliotecas):
         resultados = []
 
         for titulo, livro in livros.items():
             if getattr(livro, campo).strip().lower() == termo.strip().lower():
+                print(f"Livro encontrado: {titulo}")
                 bibliotecas_encontradas = []
 
                 for nome_biblioteca, biblioteca in bibliotecas.items():
                     for registro in biblioteca.livros:
                         if registro["livro"] == livro:
-                            bibliotecas_encontradas.append((nome_biblioteca, registro["status"].name))
+                            bibliotecas_encontradas.append(
 
+                                (
+                                    nome_biblioteca,
+                                    registro["status"].name
+                                )
+                            )
                 resultados.append((livro, bibliotecas_encontradas))
 
         if resultados:
