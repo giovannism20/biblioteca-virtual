@@ -235,7 +235,7 @@ if __name__ == "__main__":
                 continue
 
             index = int(escolha_biblioteca) - 1
-            if not (0 <= index < len(lista_bibliotecas)):
+            if not 0 <= index < len(lista_bibliotecas):
                 print("Número inválido.")
                 continue
 
@@ -256,16 +256,20 @@ if __name__ == "__main__":
                 continue
 
             index_livro = int(escolha_livro) - 1
-            if not (0 <= index_livro < len(biblioteca.livros)):
+            if not 0 <= index_livro < len(biblioteca.livros):
                 print("Número inválido.")
                 continue
 
             livro_remover = biblioteca.livros[index_livro]["livro"]
 
-            confirmacao = input(
-                f"Tem certeza que deseja remover '{livro_remover.titulo}' da biblioteca '{nome_biblioteca}'? (s/n): "
-            ).strip().lower()
-
+            confirmacao = (
+                input(
+                f"Tem certeza que deseja remover '{livro_remover.titulo}'" 
+                f" da biblioteca '{nome_biblioteca}'? (s/n): "
+                )
+            .strip()
+            .lower()
+            )
             if confirmacao == "s":
                 biblioteca.remover_livro(livro_remover)
             else:
