@@ -42,7 +42,26 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "3":
-            pass
+            lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
+            if not lista_bibliotecas:
+                continue
+
+            escolha = input("Digite o número da biblioteca que deseja excluir: ")
+
+            if escolha.isdigit():
+                index = int(escolha) - 1
+                if 0 <= index < len(lista_bibliotecas):
+                    nome_excluir = lista_bibliotecas[index]
+                    confirmacao = input(f"Tem certeza que deseja excluir '{nome_excluir}'? (s/n): ").strip().lower()
+                    if confirmacao == "s":
+                        del bibliotecas[nome_excluir]
+                        print(f"Biblioteca '{nome_excluir}' removida com sucesso.")
+                    else:
+                        print("Ação cancelada.")
+                else:
+                    print("Número inválido.")
+            else:
+                print("Entrada inválida. Digite um número válido.")
         elif opcao == "4":
             for i, nome_biblioteca in enumerate(bibliotecas.keys(), start=1):
                 print(f"{i} - {nome_biblioteca}")
