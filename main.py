@@ -151,7 +151,28 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "7":
-            pass
+            lista_livros = exibir_lista_livros(livros)
+            if not lista_livros:
+                continue
+
+            escolha = input("Digite o número do livro que deseja excluir: ")
+
+            if escolha.isdigit():
+                index = int(escolha) - 1
+                if 0 <= index < len(lista_livros):
+                    nome_livro = lista_livros[index]
+
+                    confirmacao = input(f"Tem certeza que deseja excluir o livro '{nome_livro}'? (s/n): ").lower()
+                    if confirmacao == "s":
+                        del livros[nome_livro]
+                        print(f" Livro '{nome_livro}' excluído com sucesso.")
+                    else:
+                        print(" Exclusão cancelada.")
+                else:
+                    print("Número inválido.")
+            else:
+                print("Entrada inválida. Digite um número válido.")
+                    
         elif opcao == "8":
             for i, nome_livro in enumerate(livros.keys(), start=1):
                 print(f"{i} - {nome_livro}")
