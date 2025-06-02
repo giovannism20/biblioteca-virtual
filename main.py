@@ -3,6 +3,8 @@ from model.livro import Livro
 
 from util import exibir_lista_bibliotecas, exibir_lista_livros
 from view.menu_biblioteca import menu_biblioteca
+from view.menu_busca_livro import menu_busca_livro
+from view.menu_altera_dados_livro import menu_altera_dados_livro
 
 livros = {}
 bibliotecas = {}
@@ -104,16 +106,7 @@ if __name__ == "__main__":
                     nome_livro = lista_livros[index]
                     livro = livros[nome_livro]
 
-                    print(f"\nEditando o livro: {livro.titulo}")
-                    print("Qual campo deseja alterar?")
-                    print("1 - Título")
-                    print("2 - Autor")
-                    print("3 - Gênero")
-                    print("4 - Edição")
-                    print("5 - Série")
-                    print("6 - Número de Páginas")
-                    print("7 - Formato")
-                    print("0 - Cancelar")
+                    menu_altera_dados_livro(livro)
 
                     campo = input("Escolha a opção: ")
                     campos_disponiveis = {
@@ -323,10 +316,7 @@ if __name__ == "__main__":
                 else:
                     print("Entrada inválida. Digite um número válido.")
         elif opcao == "13":
-            print("\nComo deseja buscar o livro?")
-            print("1 - Por Título")
-            print("2 - Por Autor")
-            print("3 - Por Série")
+            menu_busca_livro()
 
             opcao_busca = input("Digite o número da opção desejada: ")
 

@@ -1,0 +1,11 @@
+def menu_altera_dados_livro(livro):
+    print(f"\nEditando o livro: {livro.titulo}")
+    print("Qual campo deseja alterar?")
+    print("1 - Título")
+    print("2 - Autor")
+    print("3 - Gênero")
+    print("4 - Edição")
+    print("5 - Série")
+    print("6 - Número de Páginas")
+    print("7 - Formato")
+    print("0 - Cancelar")
