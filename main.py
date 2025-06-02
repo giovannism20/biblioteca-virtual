@@ -154,13 +154,17 @@ if __name__ == "__main__":
                 index = int(escolha) - 1
                 if 0 <= index < len(lista_livros):
                     nome_livro = lista_livros[index]
+                    livro = livros [nome_livro]
 
                     confirmacao = (
                         input(
                             f"Tem certeza que deseja excluir o livro '{nome_livro}'? (s/n): "
-                            ).lower()
+                            ).strip().lower()
                     )
                     if confirmacao == "s":
+                        for biblioteca in bibliotecas.values():
+                            biblioteca.remover_livro(livro)
+
                         del livros[nome_livro]
                         print(f" Livro '{nome_livro}' excluído com sucesso.")
                     else:
