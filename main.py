@@ -193,6 +193,9 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "8":
+            if not livros:
+                print("Ainda não há livros cadastrados.")
+                
             for i, nome_livro in enumerate(livros.keys(), start=1):
                 print(f"{i} - {nome_livro}")
         elif opcao == "9":
