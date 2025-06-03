@@ -1,13 +1,15 @@
 import os
 
-def exibir_lista_nomeada(entidades: dict, mensagem_vazia: str) -> list:
-    if not entidades:
+def exibir_lista_nomeada(
+        entidade: dict, 
+        mensagem_vazia: str = "Nenhum item encontrado."):
+    if not entidade:
         print(mensagem_vazia)
         return []
 
-    lista = list(entidades.keys())
-    for i, nome in enumerate(lista, start=1):
-        print(f"{i} - {nome}")
+    lista = list(entidade.keys())
+    for index, nome in enumerate(lista, start=1):
+        print(f"{index} - {nome}")
     return lista
 
 def exibir_lista_livros(livros: dict) -> list:
