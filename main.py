@@ -1,7 +1,7 @@
 from model.biblioteca import Biblioteca
 from model.livro import Livro
 
-from util import exibir_lista_bibliotecas, exibir_lista_livros
+from util import exibir_lista_bibliotecas, exibir_lista_livros, buscar_livros
 from view.menu_biblioteca import menu_biblioteca
 from view.menu_busca_livro import menu_busca_livro
 from view.menu_altera_dados_livro import menu_altera_dados_livro
@@ -23,8 +23,11 @@ if __name__ == "__main__":
             if not lista_bibliotecas:
                 continue
 
-            escolha = input("Digite o número da biblioteca: ")
+            escolha = input("Digite o número da biblioteca ou 0 para cancelar: ")
 
+            if escolha == "0":
+                print("Ação cancelada.")
+                continue
             if escolha.isdigit():
                 index = int(escolha) - 1
                 if 0 <= index < len(lista_bibliotecas):
@@ -48,8 +51,14 @@ if __name__ == "__main__":
             if not lista_bibliotecas:
                 continue
 
-            escolha = input("Digite o número da biblioteca que deseja excluir: ")
-
+            escolha = (
+                input(
+                    f"Digite o número da biblioteca que deseja "
+                    f"excluir ou 0 para cancelar: ")
+            )
+            if escolha == "0":
+                print("Ação cancelada.")
+                continue
             if escolha.isdigit():
                 index = int(escolha) - 1
                 if 0 <= index < len(lista_bibliotecas):
@@ -98,7 +107,11 @@ if __name__ == "__main__":
             if not lista_livros:
                 continue
 
-            escolha = input("Digite o número do livro: ")
+            escolha = input("Digite o número do livro ou 0 para cancelar: ")
+
+            if escolha == "0":
+                print("Ação cancelada.")
+                continue
 
             if escolha.isdigit():
                 index = int(escolha) - 1
@@ -148,7 +161,13 @@ if __name__ == "__main__":
             if not lista_livros:
                 continue
 
-            escolha = input("Digite o número do livro que deseja excluir: ")
+            escolha = input(
+                f"Digite o número do livro que deseja "
+                f"excluir ou 0 para cancelar: ")
+
+            if escolha == "0":
+                print("Ação cancelada.")
+                continue
 
             if escolha.isdigit():
                 index = int(escolha) - 1
@@ -174,6 +193,9 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "8":
+            if not livros:
+                print("Ainda não há livros cadastrados.")
+                
             for i, nome_livro in enumerate(livros.keys(), start=1):
                 print(f"{i} - {nome_livro}")
         elif opcao == "9":
@@ -186,7 +208,13 @@ if __name__ == "__main__":
             for i, nome_biblioteca in enumerate(lista_bibliotecas, start=1):
                 print(f"{i} - {nome_biblioteca}")
 
-            escolha_biblioteca = input("Digite o número da biblioteca: ")
+            escolha_biblioteca = input(
+                f"Digite o número da biblioteca "
+                f"ou 0 para cancelar: ")
+
+            if escolha_biblioteca == "0":
+                print("Ação cancelada.")
+                continue
 
             if escolha_biblioteca.isdigit():
                 index = int(escolha_biblioteca) - 1
@@ -226,7 +254,14 @@ if __name__ == "__main__":
             if not lista_bibliotecas:
                 continue
 
-            escolha_biblioteca = input("Digite o número da biblioteca: ")
+            escolha_biblioteca = input(
+                f"Digite o número da biblioteca" 
+                f"ou 0 para cancelar: ")
+
+            if escolha_biblioteca == "0":
+                print("Ação cancelada.")
+                continue
+
             if not escolha_biblioteca.isdigit():
                 print("Entrada inválida.")
                 continue
@@ -281,7 +316,13 @@ if __name__ == "__main__":
                 for i, nome_biblioteca in enumerate(lista_bibliotecas, start=1):
                     print(f"{i} - {nome_biblioteca}")
 
-                escolha_biblioteca = input("Digite o número da biblioteca: ")
+                escolha_biblioteca = input(
+                    f"Digite o número da biblioteca "
+                    f"ou 0 para cancelar: ")
+
+                if escolha_biblioteca == "0":
+                    print("Ação cancelada.")
+                    continue
 
                 if escolha_biblioteca.isdigit():
                     index = int(escolha_biblioteca) - 1
@@ -305,7 +346,13 @@ if __name__ == "__main__":
                 for i, nome_biblioteca in enumerate(lista_bibliotecas, start=1):
                     print(f"{i} - {nome_biblioteca}")
 
-                escolha_biblioteca = input("Digite o número da biblioteca: ")
+                escolha_biblioteca = input(
+                    f"Digite o número da biblioteca "
+                    f"ou 0 para continuar: ")
+
+                if escolha_biblioteca == "0":
+                    print("Ação cancelada.")
+                    continue
 
                 if escolha_biblioteca.isdigit():
                     index = int(escolha_biblioteca) - 1
@@ -322,7 +369,13 @@ if __name__ == "__main__":
         elif opcao == "13":
             menu_busca_livro()
 
-            opcao_busca = input("Digite o número da opção desejada: ")
+            opcao_busca = input(
+                f"Digite o número da opção desejada "
+                f"ou 0 para cancelar: ")
+
+            if opcao_busca == "0":
+                print("Ação cancelada.")
+                continue
 
             opcoes = {"1": "titulo", "2": "autor", "3": "serie"}
             campo_busca = opcoes.get(opcao_busca)
@@ -332,7 +385,7 @@ if __name__ == "__main__":
                 continue
 
             termo = input(f"Digite o {campo_busca} do livro: ")
-            Livro.buscar_livros(campo_busca, termo, livros, bibliotecas)
+            buscar_livros(campo_busca, termo, livros, bibliotecas)
         elif opcao == "14":
             print("Saindo...  Até a próxima!")
             break
