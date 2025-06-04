@@ -1,8 +1,10 @@
 import os
 
 def exibir_lista_nomeada(entidade: dict):
+    entidade_enumerada = {}
     for index, nome in enumerate(entidade, start=1):
-        print(f"{index} - {nome}")
+        entidade_enumerada.update({index: nome})
+    return entidade_enumerada
 
 def exibir_lista_livros(livros: dict) -> list:
     return exibir_lista_nomeada(livros)

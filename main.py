@@ -9,46 +9,57 @@ from view.menu_altera_dados_livro import menu_altera_dados_livro
 livros = {}
 bibliotecas = {}
 
+def cadastrar_biblioteca():
+    nome_biblioteca = input("Digite o nome da biblioteca: ")
+    instancia_biblioteca = Biblioteca(nome_biblioteca)
+    bibliotecas[nome_biblioteca] = instancia_biblioteca
+
+def listar_biblioteca():
+    print(bibliotecas)
+    lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
+    print(lista_bibliotecas)
+    if not lista_bibliotecas:
+        print("Ainda não há bibliotecas cadastradas.")
+        return    
+
+    escolha = input("Digite o número da biblioteca ou 0 para cancelar: ")
+
+    if escolha == "0":
+        print("Ação cancelada.")
+        return
+
+    if escolha.isdigit():
+        index = int(escolha) - 1
+        if 0 <= index < len(lista_bibliotecas):
+            nome_antigo = lista_bibliotecas[index]
+            instancia_biblioteca = bibliotecas[nome_antigo]
+
+            novo_nome = input("Digite o novo nome da biblioteca: ").strip()
+
+            if novo_nome:
+                instancia_biblioteca.alterar_nome(novo_nome)
+                bibliotecas[novo_nome] = instancia_biblioteca
+                del bibliotecas[nome_antigo]
+            else:
+                print("Nome inválido.")
+        else:
+            print("Número inválido.")
+    else:
+        print("Entrada inválida. Digite um número válido.")
+
 if __name__ == "__main__":
     while True:
         menu_biblioteca()
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
-            nome_biblioteca = input("Digite o nome da biblioteca: ")
-            instancia_biblioteca = Biblioteca(nome_biblioteca)
-            bibliotecas[nome_biblioteca] = instancia_biblioteca
-        elif opcao == "2":
-            lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
-            if not lista_bibliotecas:
-                continue
-
-            escolha = input("Digite o número da biblioteca ou 0 para cancelar: ")
-
-            if escolha == "0":
-                print("Ação cancelada.")
-                continue
-            if escolha.isdigit():
-                index = int(escolha) - 1
-                if 0 <= index < len(lista_bibliotecas):
-                    nome_antigo = lista_bibliotecas[index]
-                    instancia_biblioteca = bibliotecas[nome_antigo]
-
-                    novo_nome = input("Digite o novo nome da biblioteca: ").strip()
-
-                    if novo_nome:
-                        instancia_biblioteca.alterar_nome(novo_nome)
-                        bibliotecas[novo_nome] = instancia_biblioteca
-                        del bibliotecas[nome_antigo]
-                    else:
-                        print("Nome inválido.")
-                else:
-                    print("Número inválido.")
-            else:
-                print("Entrada inválida. Digite um número válido.")
+            cadastrar_biblioteca()
+        elif opcao == "2": 
+            listar_biblioteca()
         elif opcao == "3":
             lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
             if not lista_bibliotecas:
+                print("Ainda não há bibliotecas cadastradas.")
                 continue
 
             escolha = (
@@ -79,6 +90,7 @@ if __name__ == "__main__":
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "4":
             if not bibliotecas:
+                print("Ainda não há bibliotecas cadastradas.")
                 continue
 
             exibir_lista_nomeada(bibliotecas)
@@ -107,6 +119,7 @@ if __name__ == "__main__":
         elif opcao == "6":
             lista_livros = exibir_lista_livros(livros)
             if not lista_livros:
+                print("Ainda não há livros cadastrados.")
                 continue
 
             escolha = input("Digite o número do livro ou 0 para cancelar: ")
@@ -161,6 +174,7 @@ if __name__ == "__main__":
         elif opcao == "7":
             lista_livros = exibir_lista_livros(livros)
             if not lista_livros:
+                print("Ainda não há livros cadastrados.")
                 continue
 
             escolha = input(
@@ -256,11 +270,12 @@ if __name__ == "__main__":
         elif opcao == "10":
             lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
             if not lista_bibliotecas:
+                print("Ainda não há bibliotecas cadastradas.")
                 continue
 
             escolha_biblioteca = input(
-                f"Digite o número da biblioteca"
-                f"ou 0 para cancelar: ")
+                "Digite o número da biblioteca"
+                "ou 0 para cancelar: ")
 
             if escolha_biblioteca == "0":
                 print("Ação cancelada.")
@@ -342,6 +357,7 @@ if __name__ == "__main__":
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "12":
             if not lista_bibliotecas:
+                print("Ainda não há bibliotecas cadastradas.")
                 continue
 
             lista_bibliotecas = exibir_lista_nomeada(bibliotecas)
@@ -391,3 +407,4 @@ if __name__ == "__main__":
             break
         else:
             print("Opção inválida. Tente novamente.")
+
