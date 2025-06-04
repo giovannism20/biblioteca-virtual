@@ -78,10 +78,10 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "4":
-            exibir_lista_nomeada(
-                bibliotecas, 
-                "Ainda não há bibliotecas cadastradas no sistema."
-                )
+            if not bibliotecas:
+                continue
+
+            exibir_lista_nomeada(bibliotecas)
         elif opcao == "5":
             titulo = input("Nome do livro: ")
             autor = input("Autor do livro: ")
@@ -197,13 +197,15 @@ if __name__ == "__main__":
         elif opcao == "8":
             if not livros:
                 print("Ainda não há livros cadastrados.")
+                continue
 
             exibir_lista_nomeada(livros)
         elif opcao == "9":
-            lista_bibliotecas = exibir_lista_nomeada(
-                bibliotecas, 
-                "Ainda não há bibliotecas cadastradas no sistema."
-            )
+            if not bibliotecas:
+                print("Ainda não há bibliotecas cadastradas.")
+                continue
+
+            lista_bibliotecas = exibir_lista_nomeada(bibliotecas)
 
             if not lista_bibliotecas:
                 continue
@@ -223,10 +225,11 @@ if __name__ == "__main__":
                     nome_selecionado = lista_bibliotecas[index]
                     instancia_biblioteca = bibliotecas[nome_selecionado]
 
-                    lista_livros = exibir_lista_nomeada(
-                        livros, 
-                        "Ainda não há livros cadastrados no sistema."
-                    )
+                    if not livros:
+                        print("Ainda não há livros cadastrados.")
+                        continue
+
+                    lista_livros = exibir_lista_nomeada(livros)
 
                     if not lista_livros:
                         continue
@@ -256,7 +259,7 @@ if __name__ == "__main__":
                 continue
 
             escolha_biblioteca = input(
-                f"Digite o número da biblioteca" 
+                f"Digite o número da biblioteca"
                 f"ou 0 para cancelar: ")
 
             if escolha_biblioteca == "0":
@@ -308,10 +311,11 @@ if __name__ == "__main__":
             else:
                 print(" Remoção cancelada.")
         elif opcao == "11":
-            lista_bibliotecas = exibir_lista_nomeada(
-                bibliotecas, 
-                "Ainda não há bibliotecas cadastradas no sistema."
-            )
+            if not bibliotecas:
+                print("Ainda não há bibliotecas cadastradas.")
+                continue
+
+            lista_bibliotecas = exibir_lista_nomeada(bibliotecas)
 
             if not lista_bibliotecas:
                 continue
@@ -337,13 +341,10 @@ if __name__ == "__main__":
             else:
                 print("Entrada inválida. Digite um número válido.")
         elif opcao == "12":
-            lista_bibliotecas = exibir_lista_nomeada(
-                bibliotecas, 
-                "Ainda não há bibliotecas cadastradas no sistema."
-            )
-
             if not lista_bibliotecas:
                 continue
+
+            lista_bibliotecas = exibir_lista_nomeada(bibliotecas)
 
             escolha_biblioteca = input(
                 "Digite o número da biblioteca ou 0 para continuar: "

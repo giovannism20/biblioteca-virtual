@@ -1,28 +1,14 @@
 import os
 
-def exibir_lista_nomeada(
-        entidade: dict, 
-        mensagem_vazia: str = "Nenhum item encontrado."):
-    if not entidade:
-        print(mensagem_vazia)
-        return []
-
-    lista = list(entidade.keys())
-    for index, nome in enumerate(lista, start=1):
+def exibir_lista_nomeada(entidade: dict):
+    for index, nome in enumerate(entidade, start=1):
         print(f"{index} - {nome}")
-    return lista
 
 def exibir_lista_livros(livros: dict) -> list:
-    return exibir_lista_nomeada(
-        livros,
-        "Ainda não há livros cadastrados no sistema."
-    )
+    return exibir_lista_nomeada(livros)
 
 def exibir_lista_bibliotecas(bibliotecas: dict) -> list:
-    return exibir_lista_nomeada(
-        bibliotecas,
-        "Ainda não há bibliotecas cadastradas no sistema."
-    )
+    return exibir_lista_nomeada(bibliotecas)
 
 def buscar_livros(campo, termo, livros, bibliotecas):
     resultados = []
@@ -36,7 +22,6 @@ def buscar_livros(campo, termo, livros, bibliotecas):
                 for registro in biblioteca.livros:
                     if registro["livro"] == livro:
                         bibliotecas_encontradas.append(
-
                             (
                                 nome_biblioteca,
                                 registro["status"].name
