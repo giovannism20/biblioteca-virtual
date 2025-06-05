@@ -52,4 +52,3 @@ class Livro:
 
     def consulta_formato(self):
         return self.formato
-
