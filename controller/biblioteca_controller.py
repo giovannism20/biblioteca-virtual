@@ -8,20 +8,18 @@ def cadastrar_biblioteca():
     nome_biblioteca = input("Digite o nome da biblioteca: ")
     instancia_biblioteca = Biblioteca(nome_biblioteca)
     bibliotecas[nome_biblioteca] = instancia_biblioteca
-    print(f"A biblioteca '{nome_biblioteca}' foi cadastrada com sucesso!")
+    return f"A biblioteca '{nome_biblioteca}' foi cadastrada com sucesso!"
 
 def alterar_nome_biblioteca():
     lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
 
     if not lista_bibliotecas:  
-        print("Ainda não há bibliotecas cadastradas.")
-        return    
+        return "Ainda não há bibliotecas cadastradas."
 
     escolha = input("Digite o número da biblioteca ou 0 para cancelar: ")
 
     if escolha == "0":
-        print("Ação cancelada.")
-        return
+        return "Ação cancelada."
 
     if escolha.isdigit():
         index = int(escolha)
@@ -36,18 +34,18 @@ def alterar_nome_biblioteca():
                 instancia_biblioteca.alterar_nome(novo_nome)
                 bibliotecas[novo_nome] = instancia_biblioteca
                 del bibliotecas[nome_antigo]
+                return f"Nome da biblioteca alterado para '{novo_nome}' com sucesso!"
             else:
-                print("Nome inválido.")
+                return "Nome inválido."
         else:
-            print("Número inválido.")
+            return "Número inválido."
     else:
-        print("Entrada inválida. Digite um número válido.")
+        return "Entrada inválida. Digite um número válido."
 
 def excluir_biblioteca():
     lista_bibliotecas = exibir_lista_bibliotecas(bibliotecas)
     if not lista_bibliotecas:
-        print("Ainda não há bibliotecas cadastradas.")
-        return
+        return "Ainda não há bibliotecas cadastradas."
 
     escolha = (
         input(
@@ -55,8 +53,8 @@ def excluir_biblioteca():
             "excluir ou 0 para cancelar: ")
     )
     if escolha == "0":
-        print("Ação cancelada.")
-        return
+        return "Ação cancelada."
+
     if escolha.isdigit():
         index = int(escolha)
         if index in lista_bibliotecas:
@@ -68,17 +66,16 @@ def excluir_biblioteca():
             )
             if confirmacao == "s":
                 del bibliotecas[nome_excluir]
-                print(f"Biblioteca '{nome_excluir}' removida com sucesso.")
+                return f"Biblioteca '{nome_excluir}' removida com sucesso."
             else:
-                print("Ação cancelada.")
+                return "Ação cancelada."
         else:
-            print("Número inválido.")
+            return "Número inválido."
     else:
-        print("Entrada inválida. Digite um número válido.")
+        return "Entrada inválida. Digite um número válido."
 
 def listar_bibliotecas_cadastradas():
     if not bibliotecas:
-        print("Ainda não há bibliotecas cadastradas.")
-        return
+        return "Ainda não há bibliotecas cadastradas."
 
     exibir_lista_nomeada(bibliotecas)

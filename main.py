@@ -1,3 +1,4 @@
+from view.mensagens import mostrar_mensagem
 from view.menu_biblioteca import menu_biblioteca
 from view.menu_busca_livro import menu_busca_livro
 from view.menu_altera_dados_livro import menu_altera_dados_livro
@@ -24,39 +25,48 @@ from controller.vinculo_livro_biblioteca_controller import (
     status_livro_biblioteca
 )
 
-from controller.sair_controller import sair
-
-
 if __name__ == "__main__":
     while True:
         menu_biblioteca()
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
-            cadastrar_biblioteca()
-        elif opcao == "2": 
-            alterar_nome_biblioteca()
+            mensagem = cadastrar_biblioteca()
+            mostrar_mensagem(mensagem)
+        elif opcao == "2":
+            mensagem = alterar_nome_biblioteca()
+            mostrar_mensagem(mensagem)
         elif opcao == "3":
-            excluir_biblioteca()
+            mensagem = excluir_biblioteca()
+            mostrar_mensagem(mensagem)
         elif opcao == "4":
-            listar_bibliotecas_cadastradas()
+            mensagem = listar_bibliotecas_cadastradas()
         elif opcao == "5":
-            cadastrar_livro()
+            mensagem = cadastrar_livro()
+            mostrar_mensagem(mensagem)
         elif opcao == "6":
-            alterar_livro()
+            mensagem = alterar_livro()
+            mostrar_mensagem(mensagem)
         elif opcao == "7":
-            excluir_livro()
+            mensagem = excluir_livro()
+            mostrar_mensagem(mensagem)
         elif opcao == "8":
-            listar_livros_cadastrados()
+            mensagem = listar_livros_cadastrados()
         elif opcao == "9":
-            adicionar_livro_biblioteca()
+            mensagem = adicionar_livro_biblioteca()
+            mostrar_mensagem(mensagem)
         elif opcao == "10":
-            remover_livro_biblioteca()
+            mensagem = remover_livro_biblioteca()
+            mostrar_mensagem(mensagem)
         elif opcao == "11":
-            listar_livro_biblioteca()
+            mensagem = listar_livro_biblioteca()
+            mostrar_mensagem(mensagem)
         elif opcao == "12":
-            status_livro_biblioteca()
+            mensagem = status_livro_biblioteca()
+            mostrar_mensagem(mensagem)
         elif opcao == "13":
-            pesquisar_livro()
+            mensagem = pesquisar_livro()
+            mostrar_mensagem(mensagem)
         elif opcao == "14":
-            sair()
+            print("Saindo... Até a próxima!")
+            break
