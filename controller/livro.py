@@ -27,19 +27,17 @@ def cadastrar_livro():
     instancia_livro = Livro(**dados_livro)
 
     livros[dados_livro["titulo"]] = instancia_livro
-    print(f"O livro '{titulo}' foi cadastrado com sucesso!")
+    return f"O livro '{titulo}' foi cadastrado com sucesso!"
 
 def alterar_livro():
     lista_livros = exibir_lista_livros(livros)
     if not lista_livros:
-        print("Ainda não há livros cadastrados.")
-        return
+        return "Ainda não há livros cadastrados."
 
     escolha = input("Digite o número do livro ou 0 para cancelar: ")
 
     if escolha == "0":
-        print("Ação cancelada.")
-        return
+        return "Ação cancelada."
 
     if escolha.isdigit():
         index = int(escolha)
@@ -61,7 +59,7 @@ def alterar_livro():
             }
 
             if campo == "0":
-                print("Alteração cancelada.")
+                return "Alteração cancelada."
             elif campo in campos_disponiveis:
                 campo_nome, metodo = campos_disponiveis[campo]
                 novo_valor = (
@@ -70,34 +68,32 @@ def alterar_livro():
                 )
 
                 if campo_nome == "paginas" and not novo_valor.isdigit():
-                    print("Número de páginas deve ser um número.")
+                    return "Número de páginas deve ser um número."
                 else:
                     metodo(novo_valor)
 
                     if campo_nome == "titulo":
                         livros[novo_valor] = livros.pop(nome_livro)
 
-                    print(f" {campo_nome.capitalize()} atualizado com sucesso.")
+                    return f" {campo_nome.capitalize()} atualizado com sucesso."
             else:
-                print(" Opção inválida.")
+                return " Opção inválida."
         else:
-            print("Número inválido.")
+            return "Número inválido."
     else:
-        print("Entrada inválida. Digite um número válido.")
+        return "Entrada inválida. Digite um número válido."
 
 def excluir_livro():
     lista_livros = exibir_lista_livros(livros)
     if not lista_livros:
-        print("Ainda não há livros cadastrados.")
-        return
+        return "Ainda não há livros cadastrados."
 
     escolha = input(
         "Digite o número do livro que deseja "
         "excluir ou 0 para cancelar: ")
 
     if escolha == "0":
-        print("Ação cancelada.")
-        return
+        return "Ação cancelada."
 
     if escolha.isdigit():
         index = int(escolha)
@@ -115,38 +111,37 @@ def excluir_livro():
                     biblioteca.remover_livro(livro)
 
                 del livros[nome_livro]
-                print(f" Livro '{nome_livro}' excluído com sucesso.")
+                return f" Livro '{nome_livro}' excluído com sucesso."
             else:
-                print(" Exclusão cancelada.")
+                return " Exclusão cancelada."
         else:
-            print("Número inválido.")
+            return "Número inválido."
     else:
-        print("Entrada inválida. Digite um número válido.")
+        return "Entrada inválida. Digite um número válido."
 
 def listar_livros_cadastrados():
     if not livros:
-        print("Ainda não há livros cadastrados.")
-        return
+        return "Ainda não há livros cadastrados."
 
-    exibir_lista_nomeada(livros)
+    return exibir_lista_nomeada(livros)
 
 def pesquisar_livro():
     menu_busca_livro()
 
     opcao_busca = input(
         "Digite o número da opção desejada "
-        "ou 0 para cancelar: ")
+        "ou 0 para cancelar: "
+    )
 
     if opcao_busca == "0":
-        print("Ação cancelada.")
-        return
+        return "Ação cancelada."
 
     opcoes = {"1": "titulo", "2": "autor", "3": "serie"}
     campo_busca = opcoes.get(opcao_busca)
 
     if not campo_busca:
-        print("Opção inválida.")
-        return
+        return "Opção inválida."
 
     termo = input(f"Digite o {campo_busca} do livro: ")
-    buscar_livros(campo_busca, termo, livros, bibliotecas)
+    mensagem = buscar_livros(campo_busca, termo, livros, bibliotecas)
+    return mensagem
