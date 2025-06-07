@@ -1,0 +1,2 @@
+bibliotecas = {}
+livros = {}
