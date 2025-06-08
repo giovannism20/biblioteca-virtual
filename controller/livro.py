@@ -5,6 +5,7 @@ from view.menu_busca_livro import menu_busca_livro
 from view.menu_altera_dados_livro import menu_altera_dados_livro
 from data_store import bibliotecas, livros
 
+
 def cadastrar_livro():
     titulo = input("Nome do livro: ")
     autor = input("Autor do livro: ")
@@ -28,6 +29,7 @@ def cadastrar_livro():
 
     livros[dados_livro["titulo"]] = instancia_livro
     return f"O livro '{titulo}' foi cadastrado com sucesso!"
+
 
 def alterar_livro():
     lista_livros = exibir_lista_livros(livros)
@@ -62,10 +64,7 @@ def alterar_livro():
                 return "Alteração cancelada."
             elif campo in campos_disponiveis:
                 campo_nome, metodo = campos_disponiveis[campo]
-                novo_valor = (
-                    input(f"Digite o novo valor para '{campo_nome}': ")
-                    .strip()
-                )
+                novo_valor = input(f"Digite o novo valor para '{campo_nome}': ").strip()
 
                 if campo_nome == "paginas" and not novo_valor.isdigit():
                     return "Número de páginas deve ser um número."
@@ -83,14 +82,15 @@ def alterar_livro():
     else:
         return "Entrada inválida. Digite um número válido."
 
+
 def excluir_livro():
     lista_livros = exibir_lista_livros(livros)
     if not lista_livros:
         return "Ainda não há livros cadastrados."
 
     escolha = input(
-        "Digite o número do livro que deseja "
-        "excluir ou 0 para cancelar: ")
+        "Digite o número do livro que deseja " "excluir ou 0 para cancelar: "
+    )
 
     if escolha == "0":
         return "Ação cancelada."
@@ -99,12 +99,12 @@ def excluir_livro():
         index = int(escolha)
         if index in lista_livros:
             nome_livro = lista_livros[index]
-            livro = livros [nome_livro]
+            livro = livros[nome_livro]
 
             confirmacao = (
-                input(
-                    f"Tem certeza que deseja excluir o livro '{nome_livro}'? (s/n): "
-                    ).strip().lower()
+                input(f"Tem certeza que deseja excluir o livro '{nome_livro}'? (s/n): ")
+                .strip()
+                .lower()
             )
             if confirmacao == "s":
                 for biblioteca in bibliotecas.values():
@@ -119,19 +119,18 @@ def excluir_livro():
     else:
         return "Entrada inválida. Digite um número válido."
 
+
 def listar_livros_cadastrados():
     if not livros:
         return "Ainda não há livros cadastrados."
 
     return exibir_lista_nomeada(livros)
 
+
 def pesquisar_livro():
     menu_busca_livro()
 
-    opcao_busca = input(
-        "Digite o número da opção desejada "
-        "ou 0 para cancelar: "
-    )
+    opcao_busca = input("Digite o número da opção desejada " "ou 0 para cancelar: ")
 
     if opcao_busca == "0":
         return "Ação cancelada."
